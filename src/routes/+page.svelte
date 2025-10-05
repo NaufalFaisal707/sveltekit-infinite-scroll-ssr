@@ -9,8 +9,6 @@
     let offsetCount = $state(1);
     let limitState = $state(data.limit);
 
-    const vArray = Array(Number(limitState - 1)).fill("");
-
     async function fetchUsers() {
         if (users.length < Number(limitState)) {
             fetchingState = null;
@@ -119,7 +117,7 @@
                     </td>
                 </tr>
 
-                {#each vArray}
+                {#each Array(4)}
                     <tr>
                         <td>
                             <div class="skeleton h-4 w-4"></div>
@@ -140,8 +138,7 @@
                             </div>
                         </td>
                         <td>
-                            <div class="skeleton h-4 w-32"></div>
-                            <br />
+                            <div class="skeleton h-4 w-32 pb-3"></div>
                             <div class="skeleton h-4 w-20"></div>
                         </td>
                         <td>
