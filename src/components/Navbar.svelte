@@ -11,6 +11,8 @@
         <a
             href="https://github.com/NaufalFaisal707/sveltekit-infinite-scroll-ssr.git"
             class="btn btn-link"
+            target="_blank"
+            rel="noopener noreferrer"
         >
             <SimpleIconsGithub />
             Github
