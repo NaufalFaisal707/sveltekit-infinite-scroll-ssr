@@ -1,5 +1,5 @@
 {
-	"name": "calm-cherry-9407",
+	"name": "infinite-scroll-ssr-sveltekit",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",
