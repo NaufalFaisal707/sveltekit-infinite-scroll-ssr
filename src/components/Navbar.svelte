@@ -8,7 +8,10 @@
     </div>
 
     <div class="navbar-end">
-        <a href="https://" class="btn btn-link">
+        <a
+            href="https://github.com/NaufalFaisal707/sveltekit-infinite-scroll-ssr.git"
+            class="btn btn-link"
+        >
             <SimpleIconsGithub />
             Github
         </a>
