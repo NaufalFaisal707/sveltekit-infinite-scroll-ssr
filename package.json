@@ -61,5 +61,9 @@
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]
+	},
+	"dependencies": {
+		"daisyui": "^5.1.27",
+		"svelte-inview": "^4.0.4"
 	}
 }
