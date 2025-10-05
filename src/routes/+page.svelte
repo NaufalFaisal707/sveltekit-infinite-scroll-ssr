@@ -12,6 +12,10 @@
     const vArray = Array(limitState).fill("");
 
     async function fetchUsers() {
+        if (users.length < Number(limitState)) {
+            fetchingState = null;
+        }
+
         if (fetchingState === "ready") {
             fetchingState = "fetching";
 
