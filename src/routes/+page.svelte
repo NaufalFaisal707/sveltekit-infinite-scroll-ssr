@@ -9,7 +9,7 @@
     let offsetCount = $state(1);
     let limitState = $state(data.limit);
 
-    const vArray = Array(limitState).fill("");
+    const vArray = Array(Number(limitState - 1)).fill("");
 
     async function fetchUsers() {
         if (users.length < Number(limitState)) {
@@ -28,10 +28,11 @@
 
             const jsonResult = await result.json();
 
+            users = [...users, ...jsonResult.users];
+
             if (jsonResult.users.length < Number(limitState)) {
                 fetchingState = null;
             } else {
-                users = [...users, ...jsonResult.users];
                 offsetCount++;
                 fetchingState = "ready";
             }
@@ -77,9 +78,10 @@
                         </div>
                     </td>
                     <td>
-                        {company.name}
-                        <br />
-                        <span class="badge badge-ghost badge-sm">
+                        <h1 class="text-nowrap">
+                            {company.name}
+                        </h1>
+                        <span class="badge badge-ghost badge-sm text-nowrap">
                             {company.title}
                         </span>
                     </td>
@@ -87,7 +89,7 @@
                 </tr>
             {/each}
 
-            {#if fetchingState === "ready"}
+            {#if fetchingState === "ready" || fetchingState === "fetching"}
                 <tr use:inview oninview_enter={fetchUsers}>
                     <td>
                         <div class="skeleton h-4 w-4"></div>
@@ -116,37 +118,7 @@
                         <div class="skeleton h-4 w-52"></div>
                     </td>
                 </tr>
-                {#each vArray.slice(0, 2)}
-                    <tr>
-                        <td>
-                            <div class="skeleton h-4 w-4"></div>
-                        </td>
-                        <td>
-                            <div class="flex items-center gap-3">
-                                <div
-                                    class="skeleton h-12 w-12 shrink-0 rounded-full"
-                                ></div>
-                                <div>
-                                    <div class="font-bold mb-3">
-                                        <div class="skeleton h-4 w-32"></div>
-                                    </div>
-                                    <div class="text-sm opacity-50">
-                                        <div class="skeleton h-4 w-16"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="skeleton h-4 w-32"></div>
-                            <br />
-                            <div class="skeleton h-4 w-20"></div>
-                        </td>
-                        <td>
-                            <div class="skeleton h-4 w-52"></div>
-                        </td>
-                    </tr>
-                {/each}
-            {:else if fetchingState === "fetching"}
+
                 {#each vArray}
                     <tr>
                         <td>
